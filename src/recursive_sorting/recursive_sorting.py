@@ -46,7 +46,6 @@ def merge_sort(arr):
 
     start = merge_sort(arr_start)
     end = merge_sort(arr_end)
-
     return merge(start, end)
 
 
