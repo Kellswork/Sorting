@@ -12,23 +12,18 @@ import math
 # ps. u can use the *args operator in python
 
 def merge(arrA, arrB):
-    print(len(arrA), len(arrB))
     sorted_array = []
     # elements = len(arrA) + len(arrB)
     # merged_arr = [0] * elements
-    # print(len(arrA), len(arrB))
     # TO-DO
 
-    # while len(arrA) and len(arrB):
-    #     if arrA[0] <= arrB[0]:
-    #         sorted_array.append(arrA.pop(0))
-    #         print('start:', sorted_array)
-    #     else:
-    #         sorted_array.append(arrB.pop(0))
-    #         print('end:', sorted_array)
-    # print('result:', sorted_array)
+    while len(arrA) and len(arrB) != 0:
+        if arrA[0] <= arrB[0]:
+            sorted_array.append(arrA.pop(0))
+        else:
+           sorted_array.append(arrB.pop(0))
 
-    return sorted_array
+    return [*sorted_array, *arrA, *arrB]
 
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
@@ -44,18 +39,18 @@ def merge_sort(arr):
     if len(arr) < 2:
         return arr
 
-    arr_lenght = math.ceil(len(arr) / 2)
+    arr_middle = math.ceil(len(arr) / 2)
 
-    arr_start = arr[0:arr_lenght]
-    arr_end = arr[arr_lenght:]
-
+    arr_start = arr[0:arr_middle]
+    arr_end = arr[arr_middle:]
 
     start = merge_sort(arr_start)
     end = merge_sort(arr_end)
 
     return merge(start, end)
 
-merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
+
+print(merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
 
 
 # STRETCH: implement an in-place merge sort algorithm
